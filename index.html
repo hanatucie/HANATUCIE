@@ -209,10 +209,10 @@
                     </div>
 
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs font-mono font-bold">
-                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><span class="text-[9px] text-slate-400 block">ĐÁNH HỘ</span>40K</div>
-                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><span class="text-[9px] text-slate-400 block">1 MÃ</span>20K - 50K</div>
-                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><span class="text-[9px] text-slate-400 block">KHUNG VÀNG</span>30K - 60K</div>
-                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><span class="text-[9px] text-slate-400 block">KIM CƯƠNG</span>60K - 80K</div>
+                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><span class="text-[9px] text-black dark:text-slate-100 font-extrabold block">ĐÁNH HỘ</span>40K</div>
+                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><span class="text-[9px] text-black dark:text-slate-100 font-extrabold block">1 MÃ</span>20K - 50K</div>
+                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><span class="text-[9px] text-black dark:text-slate-100 font-extrabold block">KHUNG VÀNG</span>30K - 60K</div>
+                        <div class="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><span class="text-[9px] text-black dark:text-slate-100 font-extrabold block">KIM CƯƠNG</span>60K - 80K</div>
                     </div>
                 </section>
 
@@ -383,21 +383,25 @@
     </div>
 
     <style>
-        .otile{position:relative;cursor:pointer;user-select:none;-webkit-user-select:none;padding:.6rem .7rem;border-radius:.85rem;border:1.5px solid rgba(148,163,184,.4);background:rgba(241,245,249,.9);transition:all .15s ease;display:flex;flex-direction:column;gap:.15rem;min-height:4.4rem;outline:none}
-        .dark .otile{background:rgba(30,41,59,.8);border-color:rgba(71,85,105,.7)}
-        .otile:hover,.otile:focus-visible{border-color:#10b981;transform:translateY(-1px)}
-        .otile.sel{border-color:#10b981;background:rgba(16,185,129,.14);box-shadow:0 0 0 3px rgba(16,185,129,.28),0 8px 18px -8px rgba(16,185,129,.6)}
-        .dark .otile.sel{background:rgba(16,185,129,.22)}
-        .otile-check{display:none;position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;background:#10b981;color:#fff;font-size:12px;font-weight:800;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+        .otile{position:relative;cursor:pointer;user-select:none;-webkit-user-select:none;padding:.4rem .55rem;border-radius:.65rem;border:1.5px solid #cbd5e1;background:#f1f5f9;transition:all .15s ease;display:flex;flex-direction:column;gap:.05rem;outline:none}
+        .dark .otile{background:#1e293b;border-color:#475569}
+        .otile:hover,.otile:focus-visible{border-color:#10b981}
+        .otile.sel{border-color:#10b981;background:#d1fae5;box-shadow:0 0 0 2px rgba(16,185,129,.35),0 4px 10px -4px rgba(16,185,129,.55)}
+        .dark .otile.sel{background:#064e3b}
+        .otile-check{display:none;position:absolute;top:-6px;right:-6px;width:16px;height:16px;border-radius:50%;background:#10b981;color:#fff;font-size:10px;font-weight:800;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.25)}
         .otile.sel .otile-check{display:flex}
-        .otile-name{font-size:.75rem;font-weight:800;line-height:1.15}
-        .otile-sub{font-size:.625rem;color:#94a3b8;font-weight:600}
-        .otile-price{font-family:ui-monospace,monospace;font-size:.7rem;font-weight:700;color:#10b981;margin-top:auto;padding-top:.15rem}
-        .otile-qty{display:none;align-items:center;gap:.4rem;margin-top:.3rem}
+        .otile-name{font-size:.72rem;font-weight:800;line-height:1.2;color:#0f172a}
+        .dark .otile-name{color:#f8fafc}
+        .otile-price{font-family:ui-monospace,monospace;font-size:.66rem;font-weight:700;color:#047857;line-height:1.2}
+        .dark .otile-price{color:#34d399}
+        .otile-sub{font-family:inherit;font-weight:600;color:#475569}
+        .dark .otile-sub{color:#cbd5e1}
+        .otile-qty{display:none;align-items:center;gap:.3rem;margin-top:.2rem}
         .otile.sel .otile-qty{display:flex}
-        .otile-qty button{width:1.6rem;height:1.6rem;border-radius:.5rem;border:1px solid rgba(16,185,129,.6);background:rgba(16,185,129,.12);font-weight:800;line-height:1;color:inherit;cursor:pointer}
+        .otile-qty button{width:1.3rem;height:1.3rem;border-radius:.4rem;border:1px solid #10b981;background:rgba(16,185,129,.15);font-size:.75rem;font-weight:800;line-height:1;color:inherit;cursor:pointer}
         .otile-qty button:hover{background:#10b981;color:#fff}
-        .otile-qty b{min-width:1.4rem;text-align:center;font-family:ui-monospace,monospace;font-size:.8rem}
+        .otile-qty b{min-width:1.2rem;text-align:center;font-family:ui-monospace,monospace;font-size:.72rem;color:#0f172a}
+        .dark .otile-qty b{color:#f8fafc}
     </style>
 
     <!-- ENGINE JAVASCRIPT -->
@@ -503,16 +507,15 @@
         function renderOrderTags() {
             $('#order-tag-groups').innerHTML = GROUPS.map(g => `
                 <div>
-                    <div class="flex items-center gap-2 mb-2 text-[11px] font-extrabold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                    <div class="flex items-center gap-2 mb-2 text-[11px] font-extrabold uppercase tracking-wide text-slate-700 dark:text-slate-200">
                         <span>${g.icon}</span><span>${esc(g.title)}</span><span class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></span>
                     </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                         ${g.items.map(([name, label, sub]) => `
                         <div class="otile" role="button" tabindex="0" aria-pressed="false" data-i="${tagIndex(name)}">
                             <span class="otile-check">✓</span>
                             <div class="otile-name">${esc(label || name)}</div>
-                            ${sub ? `<div class="otile-sub">${esc(sub)}</div>` : ''}
-                            <div class="otile-price">+${fmtK(TAGS[tagIndex(name)][1])}</div>
+                            <div class="otile-price"><span class="pv">+${fmtK(TAGS[tagIndex(name)][1])}</span>${sub ? ` <span class="otile-sub">· ${esc(sub)}</span>` : ''}</div>
                             <div class="otile-qty"><button type="button" data-act="dec" aria-label="Giảm">−</button><b>1</b><button type="button" data-act="inc" aria-label="Tăng">+</button></div>
                         </div>`).join('')}
                     </div>
@@ -548,7 +551,7 @@
                 el.classList.toggle('sel', !!t);
                 el.setAttribute('aria-pressed', t ? 'true' : 'false');
                 if (t) el.querySelector('.otile-qty b').textContent = t.qty;
-                el.querySelector('.otile-price').textContent = t && t.qty > 1
+                el.querySelector('.otile-price .pv').textContent = t && t.qty > 1
                     ? `${fmtK(TAGS[i][1])} × ${t.qty} = ${fmtK(TAGS[i][1] * t.qty)}` : `+${fmtK(TAGS[i][1])}`;
             });
         }
