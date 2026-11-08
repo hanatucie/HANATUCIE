@@ -232,34 +232,8 @@
                     </p>
 
                     <div class="space-y-3 mb-4">
-                        <label class="text-xs font-bold text-slate-700 dark:text-slate-300 block">1. Chọn tag dịch vụ (Multi-select):</label>
-                        <div class="flex flex-wrap gap-2">
-                            <!-- Cứu Acc & Live -->
-                            <button onclick="toggleOrderTag(this, 'Đánh hộ', 40000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">✦ Đánh hộ <span class="text-emerald-500 font-mono">+40K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Cứu 1 Mã', 35000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">✦ Cứu 1 Mã <span class="text-emerald-500 font-mono">+35K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Khung Vàng', 50000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">✦ Khung Vàng <span class="text-emerald-500 font-mono">+50K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Khung Kim Cương', 60000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">✦ Khung Kim Cương <span class="text-emerald-500 font-mono">+60K</span></button>
-
-                            <!-- Pack Daily & Quest -->
-                            <button onclick="toggleOrderTag(this, 'Daily 1 Ngày', 3000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🚀 Daily 1 Ngày <span class="text-emerald-500 font-mono">+3K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Daily 1 Tháng', 40000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🚀 Daily 1 Tháng <span class="text-emerald-500 font-mono">+40K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Quest Vàng+Cam', 40000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">📜 Quest Vàng+Cam <span class="text-emerald-500 font-mono">+40K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Full VTSP', 399000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🏆 Full VTSP <span class="text-emerald-500 font-mono">+399K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Full CTTT', 399000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🏆 Full CTTT <span class="text-emerald-500 font-mono">+399K</span></button>
-
-                            <!-- Rush Map -->
-                            <button onclick="toggleOrderTag(this, 'Map Trạm Herta', 50000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🗺️ Trạm Herta <span class="text-emerald-500 font-mono">+50K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Map Jarilo VI', 70000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🗺️ Jarilo VI <span class="text-emerald-500 font-mono">+70K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Map Xianzhou Luofu', 160000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🗺️ Xianzhou Luofu <span class="text-emerald-500 font-mono">+160K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Rush Penacony', 200000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🗺️ Rush Penacony <span class="text-emerald-500 font-mono">+200K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Rush Amphoreus', 275000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🗺️ Rush Amphoreus <span class="text-emerald-500 font-mono">+275K</span></button>
-
-                            <!-- Endgame & Build -->
-                            <button onclick="toggleOrderTag(this, 'Kể Chuyện Hư Cấu', 60000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">⚔️ Kể Chuyện Hư Cấu <span class="text-emerald-500 font-mono">+60K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Sảnh Đường', 60000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">⚔️ Sảnh Đường <span class="text-emerald-500 font-mono">+60K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Ảo Ảnh Tận Thế', 60000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">⚔️ Ảo Ảnh Tận Thế <span class="text-emerald-500 font-mono">+60K</span></button>
-                            <button onclick="toggleOrderTag(this, 'Build 1 Char', 20000)" class="tag-btn px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 border text-xs font-bold">🛠️ Build 1 Char <span class="text-emerald-500 font-mono">+20K</span></button>
-                        </div>
+                        <label class="text-xs font-bold text-slate-700 dark:text-slate-300 block">1. Chọn dịch vụ — bấm vào ô để chọn, dùng − / + để tăng số lượng (tiền tự cộng dồn):</label>
+                        <div id="order-tag-groups" class="space-y-4"></div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
@@ -282,6 +256,7 @@
                     </div>
 
                     <div class="p-3.5 rounded-xl bg-slate-900 text-slate-100 space-y-2">
+                        <div id="order-breakdown" class="hidden text-[11px] font-mono text-slate-300 space-y-0.5 border-b border-slate-700 pb-2"></div>
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-slate-400 font-bold">TỔNG THÀNH TIỀN:</span>
                             <div class="text-right">
@@ -310,8 +285,6 @@
                                 <div class="flex justify-between"><span>Daily 1 Ngày</span><b>3K</b></div>
                                 <div class="flex justify-between"><span>Daily 1 Tháng</span><b>40K</b></div>
                                 <div class="flex justify-between"><span>Quest Vàng+Cam</span><b>40K</b></div>
-                                <div class="flex justify-between text-sky-500 dark:text-sky-400 font-bold"><span>Full Rank VTSP</span><b>399K</b></div>
-                                <div class="flex justify-between text-sky-500 dark:text-sky-400 font-bold"><span>Full Rank CTTT</span><b>399K</b></div>
                             </div>
                         </div>
 
@@ -333,6 +306,18 @@
                                 <div class="flex justify-between"><span>Sảnh Đường</span><b>60K</b></div>
                                 <div class="flex justify-between"><span>Ảo Ảnh Tận Thế</span><b>60K</b></div>
                                 <div class="flex justify-between"><span>Build 1 Char</span><b>20K</b></div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-3 p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 space-y-2">
+                            <b class="text-slate-900 dark:text-slate-100 block uppercase">CHẾ ĐỘ NGOÀI LỀ</b>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 font-mono">
+                                <div class="flex justify-between text-sky-500 dark:text-sky-400 font-bold"><span>Full Rank VTSP</span><b>399K</b></div>
+                                <div class="flex justify-between text-sky-500 dark:text-sky-400 font-bold"><span>Full Rank CTTT</span><b>399K</b></div>
+                                <div class="flex justify-between"><span>Điểm bậc CTTT</span><b>10K / 3 Level</b></div>
+                                <div class="flex justify-between"><span>Rank CTTT</span><b>20K / 3 Điểm</b></div>
+                                <div class="flex justify-between"><span>Rank 5 Vàng 3 Sao (1 trận)</span><b>30K</b></div>
+                                <div class="flex justify-between"><span>Rank 5 Vàng 3 Sao (đang trong chuỗi)</span><b>45K</b></div>
                             </div>
                         </div>
                     </div>
@@ -397,6 +382,24 @@
         </div>
     </div>
 
+    <style>
+        .otile{position:relative;cursor:pointer;user-select:none;-webkit-user-select:none;padding:.6rem .7rem;border-radius:.85rem;border:1.5px solid rgba(148,163,184,.4);background:rgba(241,245,249,.9);transition:all .15s ease;display:flex;flex-direction:column;gap:.15rem;min-height:4.4rem;outline:none}
+        .dark .otile{background:rgba(30,41,59,.8);border-color:rgba(71,85,105,.7)}
+        .otile:hover,.otile:focus-visible{border-color:#10b981;transform:translateY(-1px)}
+        .otile.sel{border-color:#10b981;background:rgba(16,185,129,.14);box-shadow:0 0 0 3px rgba(16,185,129,.28),0 8px 18px -8px rgba(16,185,129,.6)}
+        .dark .otile.sel{background:rgba(16,185,129,.22)}
+        .otile-check{display:none;position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;background:#10b981;color:#fff;font-size:12px;font-weight:800;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+        .otile.sel .otile-check{display:flex}
+        .otile-name{font-size:.75rem;font-weight:800;line-height:1.15}
+        .otile-sub{font-size:.625rem;color:#94a3b8;font-weight:600}
+        .otile-price{font-family:ui-monospace,monospace;font-size:.7rem;font-weight:700;color:#10b981;margin-top:auto;padding-top:.15rem}
+        .otile-qty{display:none;align-items:center;gap:.4rem;margin-top:.3rem}
+        .otile.sel .otile-qty{display:flex}
+        .otile-qty button{width:1.6rem;height:1.6rem;border-radius:.5rem;border:1px solid rgba(16,185,129,.6);background:rgba(16,185,129,.12);font-weight:800;line-height:1;color:inherit;cursor:pointer}
+        .otile-qty button:hover{background:#10b981;color:#fff}
+        .otile-qty b{min-width:1.4rem;text-align:center;font-family:ui-monospace,monospace;font-size:.8rem}
+    </style>
+
     <!-- ENGINE JAVASCRIPT -->
     <script>
         const $ = (s, r = document) => r.querySelector(s);
@@ -424,9 +427,14 @@
             ['Kể Chuyện Hư Cấu', 60000],
             ['Sảnh Đường', 60000],
             ['Ảo Ảnh Tận Thế', 60000],
-            ['Build 1 Char', 20000]
+            ['Build 1 Char', 20000],
+            ['Điểm bậc CTTT (3 Level)', 10000],
+            ['Rank CTTT (3 Điểm)', 20000],
+            ['Rank 5 Vàng 3 Sao (1 trận)', 30000],
+            ['Rank 5 Vàng 3 Sao (chuỗi)', 45000]
         ];
-        const TAG_BITS = 20;                                   // chỗ cho tối đa 20 tag
+        const TAG_BITS = 24;                                   // chỗ cho tối đa 24 tag
+        const QMAX = 100n, QCAP = 99;                          // số lượng mỗi tag: 1..99
         const B32 = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';        // bỏ I L O U cho khỏi nhầm
         const TT = 'abcdefghijklmnopqrstuvwxyz0123456789_.';   // 38 ký tự hợp lệ của TikTok ID
         const UID_MAX = 10n ** 10n;                            // UID tối đa 10 chữ số
@@ -436,11 +444,11 @@
         const esc = (t) => String(t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
         const b64e = (t) => btoa(String.fromCharCode(...new TextEncoder().encode(t))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
         const b64d = (t) => new TextDecoder().decode(Uint8Array.from(atob(t.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0)));
-        const subtotalOf = (mask) => TAGS.reduce((a, t, i) => a + ((mask >> i) & 1 ? t[1] : 0), 0);
+        const subtotalOf = (mask, qty) => TAGS.reduce((a, t, i) => a + ((mask >> i) & 1 ? t[1] * ((qty && qty[i]) || 1) : 0), 0);
         const totalOf = (sub, promoOn) => promoOn ? sub * 0.8 : sub;
         const check = (str) => B32[[...str].reduce((a, c, i) => a + B32.indexOf(c) * (i + 1), 0) % 32];   // 1 ký tự kiểm tra gõ/chép sai
 
-        function encodeOrder(mask, promoOn, uid, tt, note) {
+        function encodeOrder(mask, promoOn, uid, tt, note, qty) {
             let n = BigInt(mask);
             n = n * 2n + (promoOn ? 1n : 0n);
             n = n * UID_MAX + BigInt(uid);
@@ -448,37 +456,114 @@
             n = n * 32n + BigInt(tt.length);
             let out = ''; for (; n > 0n; n /= 32n) out = B32[Number(n % 32n)] + out;
             out += check(out);
+            // số lượng (chỉ ghi khi có tag > 1): '*' + base32 + ký tự kiểm tra; mã cũ không có phần này = mỗi tag số lượng 1
+            let q = 0n, any = false;
+            for (let i = TAGS.length - 1; i >= 0; i--) if ((mask >> i) & 1) {
+                const v = Math.min(QCAP, Math.max(1, (qty && qty[i]) || 1)); if (v > 1) any = true;
+                q = q * QMAX + BigInt(v - 1);
+            }
+            if (any) { let qs = ''; for (; q > 0n; q /= 32n) qs = B32[Number(q % 32n)] + qs; out += '*' + qs + check(qs); }
             return note ? out + '~' + b64e(note) : out;       // ghi chú (nếu có) nằm sau dấu ~
         }
 
         function decodeOrder(code) {
             const cut = code.indexOf('~');
-            let main = (cut < 0 ? code : code.slice(0, cut)).replace(/[\s-]/g, '').toUpperCase().replace(/O/g, '0').replace(/[IL]/g, '1');
+            const head = cut < 0 ? code : code.slice(0, cut), star = head.indexOf('*');
+            const clean = (t) => t.replace(/[\s-]/g, '').toUpperCase().replace(/O/g, '0').replace(/[IL]/g, '1');
+            let main = clean(star < 0 ? head : head.slice(0, star));
+            const qraw = star < 0 ? '' : clean(head.slice(star + 1));
             if (main.length < 3 || [...main].some(c => !B32.includes(c)) || check(main.slice(0, -1)) !== main.slice(-1)) return null;
             let n = 0n; for (const c of main.slice(0, -1)) n = n * 32n + BigInt(B32.indexOf(c));
             const pop = (r) => { const v = n % r; n /= r; return Number(v); };
             const len = pop(32n), tt = []; for (let i = 0; i < len; i++) tt.push(TT[pop(38n)]);
             const uid = pop(UID_MAX), promoOn = pop(2n) === 1, mask = pop(2n ** BigInt(TAG_BITS));
             if (n !== 0n || !mask || tt.includes(undefined)) return null;
+            const qty = TAGS.map(() => 1);
+            if (star >= 0) {
+                if (qraw.length < 2 || [...qraw].some(c => !B32.includes(c)) || check(qraw.slice(0, -1)) !== qraw.slice(-1)) return null;
+                let q = 0n; for (const c of qraw.slice(0, -1)) q = q * 32n + BigInt(B32.indexOf(c));
+                for (let i = 0; i < TAGS.length; i++) if ((mask >> i) & 1) { qty[i] = Number(q % QMAX) + 1; q /= QMAX; }
+                if (q !== 0n) return null;
+            }
             let note = ''; if (cut >= 0) { try { note = b64d(code.slice(cut + 1).trim()); } catch { return null; } }
-            return { mask, promoOn, uid, tt: tt.join(''), note };
+            return { mask, promoOn, uid, tt: tt.join(''), note, qty };
         }
 
-        function toggleOrderTag(btn, name, price) {
-            const idx = selectedOrderTags.findIndex(t => t.name === name);
-            if (idx > -1) {
-                selectedOrderTags.splice(idx, 1);
-                btn.classList.remove('bg-emerald-600', 'text-white');
-            } else {
-                selectedOrderTags.push({ name, price });
-                btn.classList.add('bg-emerald-600', 'text-white');
-            }
+        /* GIAO DIỆN CHỌN DỊCH VỤ: ô nổi bật khi chọn + bộ đếm số lượng (tiền tự nhân/cộng dồn) */
+        const GROUPS = [
+            { title: 'Cứu Acc & Live', icon: '✦', items: [['Đánh hộ'], ['Cứu 1 Mã'], ['Khung Vàng'], ['Khung Kim Cương']] },
+            { title: 'Daily & Quest', icon: '🚀', items: [['Daily 1 Ngày'], ['Daily 1 Tháng'], ['Quest Vàng+Cam']] },
+            { title: 'Rush Map', icon: '🗺️', items: [['Map Trạm Herta', 'Trạm Herta'], ['Map Jarilo VI', 'Jarilo VI'], ['Map Xianzhou Luofu', 'Xianzhou Luofu'], ['Rush Penacony', 'Penacony'], ['Rush Amphoreus', 'Amphoreus']] },
+            { title: 'Endgame & Build', icon: '⚔️', items: [['Kể Chuyện Hư Cấu'], ['Sảnh Đường'], ['Ảo Ảnh Tận Thế'], ['Build 1 Char']] },
+            { title: 'Chế độ ngoài lề', icon: '🎯', items: [['Full VTSP'], ['Full CTTT'], ['Điểm bậc CTTT (3 Level)', 'Điểm bậc CTTT', '3 Level'], ['Rank CTTT (3 Điểm)', 'Rank CTTT', '3 Điểm'], ['Rank 5 Vàng 3 Sao (1 trận)', 'Rank 5 Vàng 3 Sao', '1 trận'], ['Rank 5 Vàng 3 Sao (chuỗi)', 'Rank 5 Vàng 3 Sao', 'đang trong chuỗi']] }
+        ];
+        const fmtK = (v) => v % 1000 === 0 ? (v / 1000).toLocaleString('vi-VN') + 'K' : v.toLocaleString('vi-VN');
+        const tagIndex = (name) => TAGS.findIndex(t => t[0] === name);
+
+        function renderOrderTags() {
+            $('#order-tag-groups').innerHTML = GROUPS.map(g => `
+                <div>
+                    <div class="flex items-center gap-2 mb-2 text-[11px] font-extrabold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                        <span>${g.icon}</span><span>${esc(g.title)}</span><span class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></span>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                        ${g.items.map(([name, label, sub]) => `
+                        <div class="otile" role="button" tabindex="0" aria-pressed="false" data-i="${tagIndex(name)}">
+                            <span class="otile-check">✓</span>
+                            <div class="otile-name">${esc(label || name)}</div>
+                            ${sub ? `<div class="otile-sub">${esc(sub)}</div>` : ''}
+                            <div class="otile-price">+${fmtK(TAGS[tagIndex(name)][1])}</div>
+                            <div class="otile-qty"><button type="button" data-act="dec" aria-label="Giảm">−</button><b>1</b><button type="button" data-act="inc" aria-label="Tăng">+</button></div>
+                        </div>`).join('')}
+                    </div>
+                </div>`).join('');
             updateOrderSummary();
+        }
+
+        function toggleTag(i) {
+            const idx = selectedOrderTags.findIndex(t => t.name === TAGS[i][0]);
+            if (idx > -1) selectedOrderTags.splice(idx, 1);
+            else selectedOrderTags.push({ name: TAGS[i][0], price: TAGS[i][1], qty: 1 });
+            updateOrderSummary();
+        }
+
+        function changeQty(i, d) {
+            const t = selectedOrderTags.find(x => x.name === TAGS[i][0]);
+            if (t) { t.qty = Math.min(QCAP, Math.max(1, t.qty + d)); updateOrderSummary(); }
+        }
+
+        $('#order-tag-groups').addEventListener('click', (e) => {
+            const tile = e.target.closest('.otile'); if (!tile) return;
+            const i = +tile.dataset.i, act = e.target.closest('[data-act]');
+            if (act) changeQty(i, act.dataset.act === 'inc' ? 1 : -1); else toggleTag(i);
+        });
+        $('#order-tag-groups').addEventListener('keydown', (e) => {
+            const tile = e.target.closest('.otile');
+            if (tile && e.target === tile && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggleTag(+tile.dataset.i); }
+        });
+
+        function paintTiles() {
+            document.querySelectorAll('#order-tag-groups .otile').forEach(el => {
+                const i = +el.dataset.i, t = selectedOrderTags.find(x => x.name === TAGS[i][0]);
+                el.classList.toggle('sel', !!t);
+                el.setAttribute('aria-pressed', t ? 'true' : 'false');
+                if (t) el.querySelector('.otile-qty b').textContent = t.qty;
+                el.querySelector('.otile-price').textContent = t && t.qty > 1
+                    ? `${fmtK(TAGS[i][1])} × ${t.qty} = ${fmtK(TAGS[i][1] * t.qty)}` : `+${fmtK(TAGS[i][1])}`;
+            });
+        }
+
+        function paintBreakdown() {
+            const box = $('#order-breakdown');
+            const rows = [...selectedOrderTags].sort((a, b) => tagIndex(a.name) - tagIndex(b.name));
+            box.classList.toggle('hidden', !rows.length);
+            box.innerHTML = rows.map(t => `<div class="flex justify-between gap-3"><span>${esc(t.name)}${t.qty > 1 ? ' ×' + t.qty : ''}</span><span>${(t.price * t.qty).toLocaleString('vi-VN')}</span></div>`).join('');
         }
 
         function readOrder() {   // đọc form -> dữ liệu đơn + lỗi (nếu có)
             const mask = selectedOrderTags.reduce((m, t) => { const i = TAGS.findIndex(x => x[0] === t.name); return i < 0 ? m : m | (1 << i); }, 0);
-            const sub = subtotalOf(mask);
+            const qty = TAGS.map(() => 1); selectedOrderTags.forEach(t => { const i = tagIndex(t.name); if (i > -1) qty[i] = t.qty; });
+            const sub = subtotalOf(mask, qty);
             const tt = $('#order-tiktok').value.trim().replace(/^@/, '').toLowerCase();
             const uid = $('#order-uid').value.trim();
             const note = $('#order-note').value.trim().slice(0, 80);
@@ -489,7 +574,7 @@
             else if (!uid) error = '⚠️ Vui lòng nhập Game UID!';
             else if (!/^\d{1,10}$/.test(uid)) error = '⚠️ Game UID chỉ gồm số (tối đa 10 chữ số)!';
             else if (!mask) error = '⚠️ Vui lòng chọn ít nhất 1 tag dịch vụ!';
-            return { mask, sub, tt, uid, note, promoOn, error };
+            return { mask, qty, sub, tt, uid, note, promoOn, error };
         }
 
         function updateOrderSummary() {
@@ -501,11 +586,13 @@
                 $('#order-original-price').classList.add('hidden');
             }
             $('#order-total-price').innerText = totalOf(o.sub, o.promoOn).toLocaleString('vi-VN') + ' VNĐ';
-            $('#order-code-output').value = o.error ? '' : encodeOrder(o.mask, o.promoOn, o.uid, o.tt, o.note);
+            $('#order-code-output').value = o.error ? '' : encodeOrder(o.mask, o.promoOn, o.uid, o.tt, o.note, o.qty);
+            paintTiles(); paintBreakdown();
         }
 
         ['#order-tiktok', '#order-uid', '#order-promo', '#order-note'].forEach(id => $(id).addEventListener('input', updateOrderSummary));
         $('#order-code-output').placeholder = 'Điền đủ thông tin để có mã';
+        renderOrderTags();
 
         function copyOrderCode() {
             const o = readOrder();
@@ -518,11 +605,11 @@
             const d = decodeOrder($('#decoder-input').value.trim());
             const result = $('#decoder-result');
             if (!d) return showToast('Mã đơn không hợp lệ (sai hoặc chép thiếu ký tự)!');
-            const sub = subtotalOf(d.mask), total = totalOf(sub, d.promoOn);
+            const sub = subtotalOf(d.mask, d.qty), total = totalOf(sub, d.promoOn);
             let html = `<div class="text-sky-400 font-bold border-b border-slate-700 pb-1">TIKTOK: @${esc(d.tt)} - UID: ${d.uid} - TỔNG: ${total.toLocaleString('vi-VN')} VNĐ</div>`;
             if (d.promoOn) html += `<div class="text-xs text-emerald-400 font-bold">🎉 Đã áp dụng mã giảm giá 20% Hanatucie (giá gốc ${sub.toLocaleString('vi-VN')} VNĐ)</div>`;
             html += `<ul class="list-disc pl-4 text-emerald-400 mt-1">`;
-            TAGS.forEach((t, i) => { if ((d.mask >> i) & 1) html += `<li>${esc(t[0])} - ${t[1].toLocaleString('vi-VN')}</li>`; });
+            TAGS.forEach((t, i) => { if ((d.mask >> i) & 1) { const q = d.qty[i]; html += `<li>${esc(t[0])}${q > 1 ? ' ×' + q : ''} - ${(t[1] * q).toLocaleString('vi-VN')}</li>`; } });
             html += `</ul>`;
             if (d.note) html += `<div class="text-slate-400 mt-1">Ghi chú: ${esc(d.note)}</div>`;
             result.innerHTML = html;
