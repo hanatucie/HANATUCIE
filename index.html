@@ -166,6 +166,9 @@
                         <a href="https://www.tiktok.com/@hanatucie" target="_blank" rel="noopener" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80">
                             <span class="flex items-center gap-2.5"><i class="fa-brands fa-tiktok text-slate-900 dark:text-white"></i> TikTok Stream</span> <i class="fa-solid fa-arrow-up-right-from-square text-slate-400"></i>
                         </a>
+                        <a href="https://hanatucie.github.io/TIERLIST-CURRENCYWARS/" target="_blank" rel="noopener" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80">
+                            <span class="flex items-center gap-2.5"><i class="fa-solid fa-ranking-star text-amber-500"></i> TIERLIST</span> <i class="fa-solid fa-arrow-up-right-from-square text-slate-400"></i>
+                        </a>
                         <a href="https://www.youtube.com/@HanaTucie" target="_blank" rel="noopener" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80">
                             <span class="flex items-center gap-2.5"><i class="fa-brands fa-youtube text-red-600"></i> YOUTUBE CHANNEL</span> <i class="fa-solid fa-arrow-up-right-from-square text-slate-400"></i>
                         </a>
@@ -786,7 +789,7 @@ const GIFS = {"Castorice":{"name":"Castorice","normal":["data:image/gif;base64,R
     const L = [], byEl = new Map();
     const up = (el, self) => { for (let n = self ? el : el.parentElement; n && n !== b; n = n.parentElement) { const p = byEl.get(n); if (p) return p; } return null; };
     b.querySelectorAll("*").forEach(el => {
-      if (el.ownerSVGElement || el.closest(".hidden") || /^(SCRIPT|STYLE|OPTION|BR|PATH)$/i.test(el.tagName)) return;
+      if (el.ownerSVGElement || el.closest(".hidden") || !el.getClientRects().length || /^(SCRIPT|STYLE|OPTION|BR|PATH)$/i.test(el.tagName)) return;
       if (el.matches(POP)) { const p = { el, k: el.matches("button,a") ? "click" : "pop", up: up(el) }; L.push(p); byEl.set(el, p); el.classList.add("pp");
         if (el.matches('i[class*="fa-"]') && p.up) { p.k = "icon"; (p.up.kids || (p.up.kids = [])).push(p); } }   // icon hiện cùng khung chứa nó
       if (el.tagName !== "INPUT" && [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim())) {
@@ -810,8 +813,22 @@ const GIFS = {"Castorice":{"name":"Castorice","normal":["data:image/gif;base64,R
   });
   let run = 0, manual = false, front = 0;
   ["wheel", "touchstart", "keydown"].forEach(ev => addEventListener(ev, e => { if (ev !== "keydown" || e.key !== "Escape") manual = true; }, { passive: true }));
-  const follow = (y) => {   // trang tự cuộn theo chỗ đang dựng (dừng khi người xem tự cuộn)
-    return;   // không tự cuộn trang theo con trỏ
+  const act = new Map();   // con trỏ -> vị trí (y) việc nó đang làm
+  const follow = (cur, y) => { if (!manual) act.set(cur, y); };   // trang tự cuộn theo chỗ đang dựng (dừng khi người xem tự cuộn)
+  let scrollRun = 0;
+  const autoScroll = (me) => {   // cuộn mượt dần tới vị trí đang dựng, chạy suốt lúc dựng trang
+    const id = ++scrollRun;
+    const tick = () => {
+      if (id !== scrollRun || me !== run || manual) return;
+      if (act.size) {   // cuộn theo việc nằm cao nhất đang dở, để con trỏ bay xuống thẻ dưới không kéo trang đi quá sớm
+        const t = Math.max(0, Math.min(...act.values()) - innerHeight * 0.4);
+        if (t > front) front = t;   // chỉ cuộn xuống, không cuộn ngược lên
+      }
+      const d = front - scrollY;
+      if (Math.abs(d) > 1) scrollTo({ top: scrollY + Math.sign(d) * Math.max(1, Math.abs(d) * 0.06), behavior: "instant" });
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   };
   const syncStage = () => { stage.style.height = Math.max(document.documentElement.scrollHeight, innerHeight) + "px"; };
   new ResizeObserver(syncStage).observe(document.body);
@@ -851,14 +868,14 @@ const GIFS = {"Castorice":{"name":"Castorice","normal":["data:image/gif;base64,R
   };
 
   const doFrame = async (cur, b, me) => {
-    const r = docRect(b); setSt(cur, "normal"); follow(r.y);
+    const r = docRect(b); setSt(cur, "normal"); follow(cur, r.y);
     await flyTo(cur, { x: r.x - 4, y: r.y - 4 }); if (me !== run) return;
     if (Math.random() < .2) { setSt(cur, "help"); await sleep(350); }
     setSt(cur, "working"); await select(cur, r); if (me !== run) return;
     reveal(b); setSt(cur, "normal");
   };
   const doType = async (cur, t, me) => {
-    const cs = t.chars, f = docRect(cs[0]); setSt(cur, "text"); follow(f.y);
+    const cs = t.chars, f = docRect(cs[0]); setSt(cur, "text"); follow(cur, f.y);
     await flyTo(cur, { x: f.x, y: f.y + f.h / 2 }); if (me !== run) return;
     let n = 0;
     await tween(Math.min(1200, cs.length * FX.typeSpeed + 120), p => {
@@ -868,7 +885,7 @@ const GIFS = {"Castorice":{"name":"Castorice","normal":["data:image/gif;base64,R
     setSt(cur, "normal");
   };
   const doPop = async (cur, t, me) => {
-    const r = docRect(t.el); setSt(cur, "normal"); follow(r.y);
+    const r = docRect(t.el); setSt(cur, "normal"); follow(cur, r.y);
     await flyTo(cur, { x: r.x + r.w * rand(.3, .7), y: r.y + r.h * rand(.3, .7) }); if (me !== run) return;
     setSt(cur, t.k === "click" ? "link" : "working");
     if (t.k === "click") { cur.classList.add("press"); await sleep(150); cur.classList.remove("press"); } else await sleep(100);
@@ -882,27 +899,36 @@ const GIFS = {"Castorice":{"name":"Castorice","normal":["data:image/gif;base64,R
     blocks.forEach(b => { b.classList.remove("reveal"); b.classList.add("pre"); });
     document.documentElement.classList.remove("js-build");
     parts.forEach(L => L.forEach(t => { t.done = false; t.el.classList.remove("in"); (t.chars || []).forEach(c => c.classList.remove("on")); }));
-    skipBtn.hidden = false; replayBtn.hidden = true;
+    act.clear(); skipBtn.hidden = false; replayBtn.hidden = true; autoScroll(me);
     const frameQ = [...blocks], partQ = []; let framing = 0;
-    setTimeout(() => { if (me === run) { run++; showAll(); } }, 150000);   // phòng hờ: quá 45s thì hiện nốt mọi thứ
+    setTimeout(() => { if (me === run) { run++; showAll(); } }, 240000);   // phòng hờ: quá 45s thì hiện nốt mọi thứ
     const next = () => {
+      // con trỏ nào rảnh thì nhận ngay chi tiết chưa ai làm nằm cao nhất (phụ con trỏ khác làm chưa xong)
       const i = partQ.findIndex(t => !t.up || t.up.done); if (i >= 0) return partQ.splice(i, 1)[0];
-      return frameQ.length ? { k: "frame", el: frameQ.shift() } : null;
+      // hết việc để phụ thì mở thẻ kế tiếp (mỗi lúc chỉ một thẻ được mở, nên thẻ vẫn hiện từ trên xuống)
+      if (frameQ.length && !framing) return { k: "frame", el: frameQ.shift() };
+      return null;
     };
+    const byPos = (a, b) => { const ra = docRect(a.el), rb = docRect(b.el); return Math.abs(ra.y - rb.y) > 6 ? ra.y - rb.y : ra.x - rb.x; };
     const worker = async (i) => {
       await sleep(i * 150);
       const cur = makeCursor(i);
       while (me === run) {
         const t = next();
         if (!t) { if (!frameQ.length && !partQ.length && !framing) break; await sleep(80); continue; }
-        if (t.k === "frame") { framing++; await doFrame(cur, t.el, me); framing--; if (me === run) partQ.push(...parts.get(t.el).filter(x => x.k !== "icon")); }
+        if (t.k !== "frame" && !(t.el.isConnected && t.el.getClientRects().length)) {   // phần tử đang ẩn: hiện luôn, không bay tới góc trên trái
+          t.el.classList.add("in"); (t.chars || []).forEach(c => c.classList.add("on")); t.done = true;
+          (t.kids || []).forEach(c => { c.el.classList.add("in"); c.done = true; }); continue;
+        }
+        if (t.k === "frame") { framing++; await doFrame(cur, t.el, me); framing--; if (me === run) partQ.push(...parts.get(t.el).filter(x => x.k !== "icon")); partQ.sort(byPos); }
         else { if (t.k === "type") await doType(cur, t, me); else await doPop(cur, t, me); if (t.k === "type") t.done = true; }
+        act.delete(cur);
       }
       if (me !== run) return;
       await flyTo(cur, edgePoint(), 700); cur.remove();
     };
     await Promise.all(Array.from({ length: Math.max(1, FX.swarm) }, (_, i) => worker(i)));
-    if (me === run) { await sleep(300); document.querySelectorAll(".pp").forEach(e => e.classList.add("in")); document.querySelectorAll(".ch").forEach(e => e.classList.add("on")); stage.replaceChildren(); skipBtn.hidden = true; replayBtn.hidden = false; setBuilding(false); }
+    if (me === run) { scrollRun++; await sleep(300); document.querySelectorAll(".pp").forEach(e => e.classList.add("in")); document.querySelectorAll(".ch").forEach(e => e.classList.add("on")); stage.replaceChildren(); skipBtn.hidden = true; replayBtn.hidden = false; setBuilding(false); }
   }
 
   skipBtn.addEventListener("click", () => { run++; showAll(); });
