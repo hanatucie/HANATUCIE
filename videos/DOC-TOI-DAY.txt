@@ -1,0 +1,3 @@
+Bỏ 5 video NGANG (mp4) vào thư mục này, đặt tên: VD1.mp4, VD2.mp4, VD3.mp4, VD4.mp4, VD5.mp4
+(Hoặc sửa tên file trong mảng VIDEOS ở đầu thẻ <script> của index.html).
+Hệ thống cũng hỗ trợ nếu bạn để tên cũ video1.mp4 .. video5.mp4.
