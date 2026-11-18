@@ -244,15 +244,21 @@
   @media (min-width:992px){.rent-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .rent-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;transition:all ease .3s}
   .rent-card:hover{border-color:rgb(205,205,205);transform:translateY(-4px)}
-  .rent-head{background:#f3f4f8;padding:11px 15px;font-size:13px;font-weight:700;letter-spacing:.3px;color:rgb(44,52,87)}
-  .rent-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 15px;border-top:1px solid #eef0f4}
+  .rent-card.is-closed{border-color:#fecaca}
+  .rent-card.is-closed:hover{transform:none}
+  .rent-head{background:#f3f4f8;padding:11px 15px;font-size:13px;font-weight:700;letter-spacing:.3px;color:rgb(44,52,87);display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .rent-head .rent-badge-closed{font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;background:#fee2e2;color:#dc2626;letter-spacing:0}
+  .rent-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 15px;border-top:1px solid #eef0f4;cursor:pointer;transition:background .2s}
+  .rent-row.sel{background:#f0fdf4}
+  .rent-row.disabled{cursor:not-allowed;background:#fafafa}
+  .rent-row.disabled:hover{background:#fafafa}
+  .rent-row.disabled .rent-name{color:#94a3b8}
+  .rent-row.disabled .rent-note{color:#cbd5e1}
+  .rent-row.disabled .rent-price{color:#94a3b8}
   .rent-info{display:flex;flex-direction:column;gap:2px;min-width:0}
   .rent-name{font-size:13px;color:rgb(44,52,87);font-weight:500}
   .rent-note{font-size:11.5px;color:#7a8199;line-height:1.35}
-  .rent-price{font-size:13px;color:red;font-weight:600;white-space:nowrap;flex:none}
-
-  .rent-row{cursor:pointer;transition:background .2s}
-  .rent-row.sel{background:#f0fdf4}
+  .rent-status-tag{font-size:10px;font-weight:700;color:#dc2626;background:#fef2f2;border:1px solid #fecaca;padding:1px 6px;border-radius:4px;display:inline-block;width:fit-content;margin-top:2px}
   .rent-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none}
   .rent-qty{display:flex;align-items:center;gap:4px}
   .rent-qty button{width:24px;height:24px;border-radius:6px;border:1px solid #10b981;background:#ecfdf5;color:#065f46;
@@ -261,7 +267,7 @@
   .rent-qty button:disabled{opacity:.35;cursor:default}
   .rent-qty b{min-width:24px;text-align:center;font-family:ui-monospace,Consolas,monospace;font-size:13px;color:#9aa1b5}
   .rent-row.sel .rent-qty b{color:#0f172a}
-  .rent-price{text-align:right;white-space:normal}
+  .rent-price{font-size:13px;color:red;font-weight:600;text-align:right;white-space:normal}
 
   /* ===== ĐẶT ĐƠN & TẠO CODE ===== */
   .order-card{margin-top:18px;background:#fff;border:2px solid rgba(16,185,129,.4);border-radius:12px;padding:16px}
@@ -1022,9 +1028,7 @@
 
   <div id="toast"></div>
   <script>
-    /* ===== VIDEO VIRAL: LINK TIKTOK (THẺ THÔNG MINH: THUMBNAIL + TIÊU ĐỀ + MỞ LINK) =====
-       Tiết kiệm 100% dung lượng 4G/5G, tải trang tức thì.
-       Bấm vào ô giữa sẽ chuyển thẳng đến video trên TikTok! */
+    /* ===== VIDEO VIRAL: LINK TIKTOK ===== */
     var TIKTOK_VIDEOS = [
       "https://www.tiktok.com/@hanatucie/video/7632363920933834005",
       "https://www.tiktok.com/@hanatucie/video/7632363920933834005",
@@ -1032,7 +1036,7 @@
       "https://www.tiktok.com/@hanatucie/video/7632363920933834005",
       "https://www.tiktok.com/@hanatucie/video/7632363920933834005"
     ];
-    var VV_AUTO_MS = 4000; /* thời gian tự chuyển ô (mili giây) */
+    var VV_AUTO_MS = 4000;
 
     (function(){
       var stage=document.getElementById("vv-stage"), dotsBox=document.getElementById("vv-dots");
@@ -1041,17 +1045,14 @@
       TIKTOK_VIDEOS.forEach(function(url, i){
         var s=document.createElement("div"); s.className="vv-slide";
         
-        /* Ảnh bìa Thumbnail */
         var img=document.createElement("img");
         img.className="vv-thumb";
         img.alt="TikTok Video";
 
-        /* Nút Play nổi ở giữa */
         var playBtn=document.createElement("div");
         playBtn.className="vv-play-btn";
         playBtn.innerHTML='<svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>';
 
-        /* Nút chuyển đến chính link TikTok góc trên */
         var a=document.createElement("a");
         a.className="vv-tiktok-link";
         a.href=url;
@@ -1061,7 +1062,6 @@
         a.innerHTML='<img src="images/tiktok.svg" alt="TikTok"><span>Xem trên TikTok</span>' +
           '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
 
-        /* Thanh hiển thị tiêu đề video TikTok góc dưới */
         var cap=document.createElement("div");
         cap.className="vv-caption-bar";
         cap.innerHTML='<span class="vv-caption-author">@hanatucie</span><span class="vv-caption-title">Đang tải video...</span>';
@@ -1073,7 +1073,6 @@
         s.appendChild(cap);
         s.appendChild(a);
 
-        /* Tự động lấy Thumbnail và Tiêu đề từ TikTok */
         fetch("https://www.tikwm.com/api/?url=" + encodeURIComponent(url))
           .then(function(res){ return res.json() })
           .then(function(data){
@@ -1091,7 +1090,6 @@
             }
           })
           .catch(function(){
-            /* Dự phòng qua oEmbed */
             fetch("https://www.tiktok.com/oembed?url=" + encodeURIComponent(url))
               .then(function(r){ return r.json() })
               .then(function(oe){
@@ -1103,11 +1101,10 @@
           });
 
         s.addEventListener("click", function(e){
-          if(e.target.closest(".vv-tiktok-link")) return; /* Nút góc đã có href */
+          if(e.target.closest(".vv-tiktok-link")) return;
           if(i !== cur){
             go(i);
           } else {
-            /* Bấm vào ô giữa: mở thẳng đến video TikTok ở tab mới */
             window.open(url, "_blank", "noopener,noreferrer");
           }
         });
@@ -1134,7 +1131,6 @@
       document.getElementById("vv-prev").onclick=function(){go(cur-1)};
       document.getElementById("vv-next").onclick=function(){go(cur+1)};
 
-      /* Tự lướt liên tục; dừng khi rê chuột vào */
       var timer=null;
       function schedule(){
         clearTimeout(timer);
@@ -1169,11 +1165,9 @@
         document.body.removeChild(a);
       });
     }
-    /* ===== DỊCH VỤ CÀY THUÊ + ĐẶT ĐƠN & TẠO CODE (chức năng lấy từ web cũ) =====
-       Mã đơn = TOÀN BỘ lựa chọn (dịch vụ, số lượng, mã giảm giá, UID, TikTok ID, ghi chú) nén vào 1 chuỗi base32,
-       không cần database. QUAN TRỌNG: chỉ THÊM dịch vụ mới vào CUỐI bảng TAGS (tối đa TAG_BITS). Không đổi thứ tự,
-       không xóa, không sửa giá cũ nếu muốn mã cũ vẫn giải đúng.
-       Mỗi dòng: [tên, giá (VNĐ), chữ giá hiển thị, ghi chú] */
+
+    /* ===== DỊCH VỤ CÀY THUÊ + ĐẶT ĐƠN & TẠO CODE =====
+       Giữ nguyên mảng TAGS để giải mã đúng toàn bộ đơn cũ */
     var $ = function(s,r){ return (r||document).querySelector(s) };
     var TAGS = [
       ['Daily 1 Ngày',3000,'3K',''],
@@ -1195,24 +1189,25 @@
       ['1 trận 5 Vàng 3 Sao (1 trận)',30000,'30K',''],
       ['1 trận 5 Vàng 3 Sao (đang trong chuỗi)',50000,'50K','']
     ];
-    /* nhóm hiển thị: [tiêu đề, [vị trí dòng đầu, vị trí dòng cuối] trong TAGS] */
+    /* nhóm hiển thị: [tiêu đề, dòng đầu, dòng cuối, ngừng_hoạt_động] 
+       ĐÃ ĐẨY RUSH MAP XUỐNG CUỐI VÀ ĐÁNH DẤU NGỪNG HOẠT ĐỘNG */
     var GROUPS = [
       ['PACK DAILY & QUEST',0,2],
-      ['RUSH MAP',3,7],
       ['ENDGAME CONTENT ACC CLONE',8,11],
-      ['CHẾ ĐỘ NGOÀI LỀ',12,17]
+      ['CHẾ ĐỘ NGOÀI LỀ',12,17],
+      ['RUSH MAP',3,7,true]
     ];
     var TAG_BITS=24, QMAX=100n, QCAP=99;
-    var B32='0123456789ABCDEFGHJKMNPQRSTVWXYZ';          /* bỏ I L O U cho khỏi nhầm */
-    var TT='abcdefghijklmnopqrstuvwxyz0123456789_.';     /* ký tự hợp lệ của TikTok ID */
+    var B32='0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+    var TT='abcdefghijklmnopqrstuvwxyz0123456789_.';
     var UID_MAX=10n**10n, PROMO='hanatucie', PROMO_MIN=200000;
-    var qtys = TAGS.map(function(){return 0});            /* 0 = chưa chọn */
+    var qtys = TAGS.map(function(){return 0});
 
     function esc(t){ return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]}) }
     function b64e(t){ return btoa(String.fromCharCode.apply(null,new TextEncoder().encode(t))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'') }
     function subtotalOf(mask,qty){ return TAGS.reduce(function(a,t,i){ return a+(((mask>>i)&1)?t[1]*((qty&&qty[i])||1):0) },0) }
     function totalOf(sub,promoOn){ return promoOn?sub*0.8:sub }
-    function check(str){ return B32[[].slice.call(str).reduce(function(a,c,i){return a+B32.indexOf(c)*(i+1)},0)%32] }   /* 1 ký tự kiểm tra gõ/chép sai */
+    function check(str){ return B32[[].slice.call(str).reduce(function(a,c,i){return a+B32.indexOf(c)*(i+1)},0)%32] }
     function fmtK(v){ return v%1000===0?(v/1000).toLocaleString('vi-VN')+'K':v.toLocaleString('vi-VN') }
 
     function encodeOrder(mask,promoOn,uid,tt,note,qty){
@@ -1223,41 +1218,54 @@
       n=n*32n+BigInt(tt.length);
       var out=''; for(;n>0n;n/=32n) out=B32[Number(n%32n)]+out;
       out+=check(out);
-      /* số lượng (chỉ ghi khi có dịch vụ > 1): '*' + base32 + ký tự kiểm tra */
       var q=0n, any=false;
       for(var j=TAGS.length-1;j>=0;j--) if((mask>>j)&1){
         var v=Math.min(QCAP,Math.max(1,(qty&&qty[j])||1)); if(v>1) any=true;
         q=q*QMAX+BigInt(v-1);
       }
       if(any){ var qs=''; for(;q>0n;q/=32n) qs=B32[Number(q%32n)]+qs; out+='*'+qs+check(qs); }
-      return note?out+'~'+b64e(note):out;                /* ghi chú (nếu có) nằm sau dấu ~ */
+      return note?out+'~'+b64e(note):out;
     }
 
     function renderRent(){
       $('#rent-grid').innerHTML=GROUPS.map(function(g){
+        var isClosed = !!g[3];
         var rows='';
         for(var i=g[1];i<=g[2];i++){
-          rows+='<div class="rent-row" data-i="'+i+'"><div class="rent-info"><span class="rent-name">'+esc(TAGS[i][0])+'</span>'+
-            (TAGS[i][3]?'<span class="rent-note">'+esc(TAGS[i][3])+'</span>':'')+'</div>'+
-            '<div class="rent-right"><span class="rent-price">'+esc(TAGS[i][2])+'</span>'+
-            '<div class="rent-qty"><button type="button" data-act="dec" aria-label="Giảm">−</button><b>0</b>'+
-            '<button type="button" data-act="inc" aria-label="Tăng">+</button></div></div></div>';
+          rows+='<div class="rent-row'+(isClosed?' disabled':'')+'" data-i="'+i+'"><div class="rent-info"><span class="rent-name">'+esc(TAGS[i][0])+'</span>'+
+            (TAGS[i][3]?'<span class="rent-note">'+esc(TAGS[i][3])+'</span>':'')+
+            (isClosed?'<span class="rent-status-tag">Ngừng hoạt động</span>':'')+'</div>'+
+            '<div class="rent-right"><span class="rent-price"'+(isClosed?' style="text-decoration:line-through;color:#94a3b8"':'')+'>'+esc(TAGS[i][2])+'</span>'+
+            '<div class="rent-qty"><button type="button" data-act="dec" aria-label="Giảm"'+(isClosed?' disabled':'')+'>−</button><b>0</b>'+
+            '<button type="button" data-act="inc" aria-label="Tăng"'+(isClosed?' disabled':'')+'>+</button></div></div></div>';
         }
-        return '<div class="rent-card"><div class="rent-head">'+esc(g[0])+'</div>'+rows+'</div>';
+        var headBadge = isClosed ? '<span class="rent-badge-closed">Ngừng hoạt động</span>' : '';
+        return '<div class="rent-card'+(isClosed?' is-closed':'')+'"><div class="rent-head"><span>'+esc(g[0])+'</span>'+headBadge+'</div>'+rows+'</div>';
       }).join('');
     }
 
     function setQty(i,v){ qtys[i]=Math.min(QCAP,Math.max(0,v)); updateOrderSummary(); }
     $('#rent-grid').addEventListener('click',function(e){
       var row=e.target.closest('.rent-row'); if(!row) return;
+      if(row.classList.contains('disabled')){
+        showToast('Mục này hiện đang ngừng hoạt động!');
+        return;
+      }
       var i=+row.dataset.i, act=e.target.closest('[data-act]');
       if(act) setQty(i,qtys[i]+(act.dataset.act==='inc'?1:-1));
-      else setQty(i,qtys[i]>0?0:1);                      /* bấm vào dòng = chọn / bỏ chọn */
+      else setQty(i,qtys[i]>0?0:1);
     });
 
     function paintRows(){
       document.querySelectorAll('#rent-grid .rent-row').forEach(function(el){
         var i=+el.dataset.i, q=qtys[i];
+        if(el.classList.contains('disabled')){
+          el.classList.remove('sel');
+          el.querySelector('.rent-qty b').textContent=0;
+          el.querySelector('[data-act="dec"]').disabled=true;
+          el.querySelector('[data-act="inc"]').disabled=true;
+          return;
+        }
         el.classList.toggle('sel',q>0);
         el.querySelector('.rent-qty b').textContent=q;
         el.querySelector('[data-act="dec"]').disabled=(q<=0);
@@ -1274,7 +1282,7 @@
       }).join('');
     }
 
-    function readOrder(){   /* đọc form -> dữ liệu đơn + lỗi (nếu có) */
+    function readOrder(){
       var mask=0, qty=TAGS.map(function(){return 1});
       qtys.forEach(function(q,i){ if(q>0){ mask|=(1<<i); qty[i]=q; } });
       var sub=subtotalOf(mask,qty);
@@ -1337,11 +1345,11 @@
       { name: "Daily 1 Ngày (3K)", group: "PACK DAILY & QUEST", target: "[data-i='0']", tag: "3K" },
       { name: "Daily 1 Tháng (40K)", group: "PACK DAILY & QUEST", target: "[data-i='1']", tag: "40K" },
       { name: "Quest Vàng+Cam (40K)", group: "PACK DAILY & QUEST", target: "[data-i='2']", tag: "40K" },
-      { name: "Rush Map: Trạm Herta (80K)", group: "RUSH MAP", target: "[data-i='3']", tag: "80K" },
-      { name: "Rush Map: Jarilo V (200K)", group: "RUSH MAP", target: "[data-i='4']", tag: "200K" },
-      { name: "Rush Map: Xianzhou Luofu (250K)", group: "RUSH MAP", target: "[data-i='5']", tag: "250K" },
-      { name: "Rush Map: Penacony (350K)", group: "RUSH MAP", target: "[data-i='6']", tag: "350K" },
-      { name: "Rush Map: Amphoreus (450K)", group: "RUSH MAP", target: "[data-i='7']", tag: "450K" },
+      { name: "Rush Map: Trạm Herta (Ngừng hoạt động)", group: "RUSH MAP", target: "[data-i='3']", tag: "Tạm ngưng" },
+      { name: "Rush Map: Jarilo V (Ngừng hoạt động)", group: "RUSH MAP", target: "[data-i='4']", tag: "Tạm ngưng" },
+      { name: "Rush Map: Xianzhou Luofu (Ngừng hoạt động)", group: "RUSH MAP", target: "[data-i='5']", tag: "Tạm ngưng" },
+      { name: "Rush Map: Penacony (Ngừng hoạt động)", group: "RUSH MAP", target: "[data-i='6']", tag: "Tạm ngưng" },
+      { name: "Rush Map: Amphoreus (Ngừng hoạt động)", group: "RUSH MAP", target: "[data-i='7']", tag: "Tạm ngưng" },
       { name: "Endgame: Kể Chuyện Hư Cấu (60K)", group: "ENDGAME CONTENT", target: "[data-i='8']", tag: "60K" },
       { name: "Endgame: Sảnh Đường (60K)", group: "ENDGAME CONTENT", target: "[data-i='9']", tag: "60K" },
       { name: "Endgame: Ảo Ảnh Tận Thế (60K)", group: "ENDGAME CONTENT", target: "[data-i='10']", tag: "60K" },
@@ -1369,7 +1377,7 @@
         if(el){
           el.scrollIntoView({ behavior: "smooth", block: "center" });
           el.classList.remove("flash-highlight");
-          void el.offsetWidth; /* trigger reflow */
+          void el.offsetWidth;
           el.classList.add("flash-highlight");
           setTimeout(function(){ el.classList.remove("flash-highlight") }, 1900);
         }
@@ -1379,7 +1387,6 @@
       function renderSug(q){
         var cq = cleanStr(q);
         if(!cq){
-          /* khi chưa gõ, gợi ý các mục chính */
           var popular = SEARCH_DATA.slice(0, 7);
           sug.innerHTML = '<div class="sug-group-title">Mục phổ biến</div>' +
             popular.map(function(item){
@@ -1501,7 +1508,6 @@
         });
       }
 
-      /* Scroll Spy: cập nhật nút đang sáng theo vị trí cuộn trang */
       var spyTimer = null;
       function updateSpy(){
         var scrollPos = window.scrollY || window.pageYOffset;
@@ -1543,7 +1549,6 @@
 
     /* ===== TRÌNH PHÁT BGM PHONG CÁCH WEB GAME ===== */
     (function initBGM(){
-      /* 5 bài BGM thực tế của bạn trong thư mục music/ */
       var BGM_TRACKS = [
         "music/MUSIC1 - Wyy my sweetie.mp3",
         "music/MUSIC2 - FEVER PITCH.mp3",
@@ -1552,7 +1557,6 @@
         "music/MUSIC5 - Thanh y (Bản DJ).mp3"
       ];
 
-      /* Hàm tự động trích xuất tên bài từ tên file */
       function parseTrackTitle(file, index){
         var name = file.replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, '').trim();
         var m = name.match(/^(?:MUSIC|VD|BGM|BAI)?\s*\d*\s*[-–—]\s*(.+)$/i);
@@ -1583,7 +1587,6 @@
       var lastVol = 0.6;
       audio.volume = 0.6;
 
-      /* Điền danh sách vào thẻ select */
       selectEl.innerHTML = BGM_TRACKS.map(function(track, idx){
         var title = parseTrackTitle(track, idx);
         return '<option value="' + idx + '">' + (idx + 1) + '. ' + esc(title) + '</option>';
@@ -1658,12 +1661,11 @@
       });
 
       audio.addEventListener("ended", function(){
-        loadTrack(curTrack + 1, true); /* tự động qua bài tiếp theo */
+        loadTrack(curTrack + 1, true);
       });
 
       audio.addEventListener("error", function(){
         var curSrc = BGM_TRACKS[curTrack];
-        /* Nếu file MUSIC1 - ...mp3 chưa có thì thử kiểm tra VD1.mp3 */
         if(!audio._fallbackVD){
           audio._fallbackVD = true;
           audio.src = "music/VD" + (curTrack + 1) + ".mp3";
@@ -1694,12 +1696,8 @@
         });
       }
 
-      /* Mặc định phát ngay bài đầu tiên khi vừa mở trang */
       loadTrack(0, true);
 
-      /* Bộ mở khóa tự động (Autoplay Policy Unlocker):
-         Nếu trình duyệt chặn âm thanh tự động khi vừa mở, 
-         vừa chạm/bấm/cuộn trang lần đầu tiên là nhạc sẽ tự động bật ngay */
       function unlockAutoplay(){
         if(!isPlaying){
           playAudio();
